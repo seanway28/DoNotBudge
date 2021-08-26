@@ -1,0 +1,23 @@
+{
+  "name": "donotbudge",
+  "version": "1.0.0",
+  "description": "A PWA Budget Tracker",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seanway28/DoNotBudge.git"
+  },
+  "author": "smc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seanway28/DoNotBudge/issues"
+  },
+  "homepage": "https://github.com/seanway28/DoNotBudge#readme",
+  "dependencies": {
+    "install": "^0.13.0"
+  }
+}
