@@ -78,3 +78,67 @@ function populateChart() {
         }
     });
 }
+
+function sendTransaction(isAdding) {
+    let nameE1 = document.querySelector("#t-name");
+    let amountE1 = document.querySelector("#t-amount");
+    let errorE1 = document.querySelector(".form.error");
+
+    // Value Form
+    if (nameE1.value === "" || amountE1.value === "") {
+        errorE1.textContent = "Missing Information!";
+        return;
+    } else {
+        errorE1.textContent = "";
+    }    
+
+    // Create Record
+    let transaction = {
+        name: nameE1.value,
+        value: amountE1.value,
+        date: new Date().toISOString()
+    };
+    // If subtracting funds, covert to a negative number
+    if (!isAdding) {
+        transaction.value *= -1;
+    }
+    // Add to the begining of the array of data
+    transaction.unshift(transaction);
+    // Rerun Logic
+    populateChart();
+    populateTable();
+    populateTotal();
+    // Send to server
+
+    fetch("/api/transaction", {
+        method: "POST",
+        body: JSON.stringify(transaction),
+        headers: {
+            Accept: "application/json, text/plain. */*",
+            "Content-Type": "applicaiton/json"
+        }
+    })
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        if (data, errors) {
+            errorE1.textContent = "Missing Information";
+        }
+        else {
+            // Clear the Form
+            nameE1.value = "";
+            amountE1.value = "";
+        }
+    })
+    .catch(err => {
+        // Fetch failed. Save in Indexed db
+        saveRecord(transaction);
+
+        // Clear form
+        nameE1.value = "";
+        amountE1.value + "";
+        
+    })
+
+}
