@@ -138,7 +138,12 @@ function sendTransaction(isAdding) {
         // Clear form
         nameE1.value = "";
         amountE1.value + "";
-        
-    })
-
+    });
 }
+
+document.querySelector("#add-btn").onclick = function () {
+    sendTransaction(true);
+};
+document.querySelector("#sub-btn").onclick = function() {
+    sendTransaction(false);
+};
