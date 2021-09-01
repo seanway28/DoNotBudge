@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/seanway28/DoNotBudge#readme",
   "dependencies": {
-    "install": "^0.13.0"
+    "install": "^0.13.0",
+    "webpack-bundle-analyzer": "^4.4.2",
+    "webpack-cli": "^4.8.0"
   }
 }
