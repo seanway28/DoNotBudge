@@ -1,4 +1,4 @@
-const mongoose = reqyure("mongoose");
+const mongoose = reqquire("mongoose");
 
 const Schema = mongoose.Schema;
 
