@@ -1,14 +1,15 @@
 let db;
 
 const request = indexedDB.open('budget_tracker', 1);
-request.onupgradeneeded = function(event) {
-    const db = event.target.results;
 
-    db.CreateObjectStore('new_transaction', { autoIncrement: true });
+request.onupgradeneeded = function(event) {
+    const db = event.target.result;
+
+    db.createObjectStore('new_transaction', { autoIncrement: true });
 };
 
 request.onsuccess = function(event) {
-    db = event.target.results;
+    db = event.target.result;
 
     if (navigator.onLine) {
         uploadTransactions();
@@ -32,7 +33,7 @@ function uploadTransactions() {
     const getAll = budgetObjectStore.getAll();
 
     getAll.onsuccess = function() {
-        if (getAll.results.length > 0) {
+        if (getAll.result.length > 0) {
             fetch('/api/transaction', {
                 method: 'POST',
                 body: JSON.stringify(getAll.result),

@@ -49,7 +49,7 @@ function populateChart() {
     // Create Date labels
     let labels = reversed.map(t => {
         let date = new Date(t.date);
-        return `${date.getMonth() + 1}/${date.getData()}/${date.getFullYear()}`;
+        return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
     });
 
     // Create incremental values for chart
@@ -65,7 +65,7 @@ function populateChart() {
     
     let ctx = document.getElementById("myChart").getContext("2d");
 
-    myChart = new CharacterData(ctx, {
+    myChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels,
@@ -103,7 +103,7 @@ function sendTransaction(isAdding) {
         transaction.value *= -1;
     }
     // Add to the begining of the array of data
-    transaction.unshift(transaction);
+    transactions.unshift(transaction);
     // Rerun Logic
     populateChart();
     populateTable();
