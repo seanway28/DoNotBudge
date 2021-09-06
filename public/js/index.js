@@ -82,15 +82,15 @@ function populateChart() {
 function sendTransaction(isAdding) {
     let nameE1 = document.querySelector("#t-name");
     let amountE1 = document.querySelector("#t-amount");
-    let errorE1 = document.querySelector(".form.error");
+    // let errorE1 = document.querySelector(".form.error");
 
-    // Value Form
-    if (nameE1.value === "" || amountE1.value === "") {
-        errorE1.textContent = "Missing Information!";
-        return;
-    } else {
-        errorE1.textContent = "";
-    }    
+    // // Value Form
+    // if (nameE1.value === "" || amountE1.value === "") {
+    //     errorE1.textContent = "Missing Information!";
+    //     return;
+    // } else {
+    //     errorE1.textContent = "";
+    // }    
 
     // Create Record
     let transaction = {
